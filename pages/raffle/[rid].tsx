@@ -251,6 +251,8 @@ const Raffle: NextPage = () => {
   ) : data ? (
     <div className={styles.container}>
       <Head>
+      <title>Orbit Space | Raffle House</title>
+      <link rel = "icon" href ="https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/3TMxuBEMAV3BQunMBrFtKf8UQT2LmJchVbnV2o2ddkZU/logo.png"></link>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
@@ -342,26 +344,6 @@ const Raffle: NextPage = () => {
           <p>
             Current Tickets: &nbsp; <b>{purchasedTickets}</b>
           </p>
-          <div className={styles.selector}>
-            <button
-              disabled
-              onClick={() => {
-                setSelectedTickets(selectedTickets - 1);
-              }}
-            >
-              −
-            </button>
-            <h3>{selectedTickets.toString()}</h3>
-
-            <button
-              disabled
-              onClick={() => {
-                setSelectedTickets(selectedTickets + 1);
-              }}
-            >
-              +
-            </button>
-          </div>
           <button
             style={{ width: "100%" }}
             onClick={() => handlePurchaseTickets(selectedTickets)}
