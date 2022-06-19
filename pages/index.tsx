@@ -7,11 +7,13 @@ import { ScaleLoader } from "react-spinners";
 import Raffle from "../src/components/raffle/raffle";
 import { ContractContext } from "../src/context/contract";
 import styles from "../styles/home.module.scss";
+import styles2 from '../src/components/raffle/raffle.module.scss';
+import { useRouter } from "next/router";
 
 const Home: NextPage = () => {
   const [raffles, setRaffles] = useState<JSX.Element[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-
+  const router = useRouter();
   const program = useContext(ContractContext);
 
   const fetchRaffles = async () => {
@@ -46,7 +48,7 @@ const Home: NextPage = () => {
     <div className={styles.container}>
 
       <Head>
-        <title>Orbit Space | Raffle House</title>
+         <title>Orbit Space | Raffle House</title>
         <meta property="og:title" content={'Orbits Space'} key="ogtitle" />
         <meta property="og:description" content={'Orbit Space: A Raffle House'} key="ogdesc" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -55,7 +57,7 @@ const Home: NextPage = () => {
           href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
           rel="stylesheet"
         />
-        <link rel = "icon" href ="https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/3TMxuBEMAV3BQunMBrFtKf8UQT2LmJchVbnV2o2ddkZU/logo.png"></link>
+           <link rel = "icon" href ="https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/3TMxuBEMAV3BQunMBrFtKf8UQT2LmJchVbnV2o2ddkZU/logo.png"></link>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         
       </Head>
@@ -66,10 +68,23 @@ const Home: NextPage = () => {
           This part is still under development, go back to the current hosted raffle 
         </p>
       </div>
+      <hr style={{ margin: "50px 0" }} />
 
+      <div className={styles2.container}>
+            <div className={styles2.title}>
+                Orbit
+            </div>
+            <div className={styles2.image}>
+                <img src="https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/3TMxuBEMAV3BQunMBrFtKf8UQT2LmJchVbnV2o2ddkZU/logo.png" draggable={false}/>
+            </div>
+            <div className={styles2.footer_button} onClick={() => router.push(`/raffle/test`)}>
+                MORE INFO
+            </div>
+        </div>
 
-    </div>
+      </div>
   );
 };
 
 export default Home;
+
