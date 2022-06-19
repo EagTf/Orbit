@@ -75,7 +75,7 @@ const Home: NextPage = () => {
                 Orbit
             </div>
             <div className={styles2.image}>
-                <img src="https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/3TMxuBEMAV3BQunMBrFtKf8UQT2LmJchVbnV2o2ddkZU/logo.png" draggable={false}/>
+                <img src="./logo.png" draggable={false}/>
             </div>
             <div className={styles2.footer_button} onClick={() => router.push(`/raffle/test`)}>
                 MORE INFO
