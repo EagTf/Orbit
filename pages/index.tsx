@@ -75,7 +75,7 @@ const Home: NextPage = () => {
                 Orbit
             </div>
             <div className={styles2.image}>
-                <img src="./logo.png" draggable={false}/>
+                <img src="https://cdn.discordapp.com/attachments/987496036056596480/988184196788928563/logo.jpg" draggable={false}/>
             </div>
             <div className={styles2.footer_button} onClick={() => router.push(`/raffle/test`)}>
                 MORE INFO
