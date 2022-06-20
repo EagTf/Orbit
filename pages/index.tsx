@@ -81,6 +81,7 @@ const Home: NextPage = () => {
                 MORE INFO
             </div>
         </div>
+        
 
       </div>
   );
