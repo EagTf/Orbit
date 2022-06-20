@@ -20,6 +20,7 @@ import {
 type LocalRaffleInformation = {
   purchasedTickets: number;
   setAt: number;
+  allTickets: number;
 };
 
 type RaffleType = {
@@ -46,11 +47,14 @@ const Raffle: NextPage = () => {
 
   const [selectedTickets, setSelectedTickets] = useState<number>(1);
   const [purchasedTickets, setPurchasedTickets] = useState<number>(0);
+  const [allTickets, setallTickets] = useState<number>(0);
 
   const [drawn, setDrawn] = useState<boolean>(false);
   const [winners, setWinners] = useState<JSX.Element[]>();
 
   const [tokenInfo, setTokenInfo] = useState<TokenDataType | null>(null);
+
+  
 
   useEffect(() => {
     if (!data) return;
@@ -82,10 +86,11 @@ const Raffle: NextPage = () => {
       setLoading(false);
     }
   };
-
   const getAndSetPurchasedTickets = async () => {
     if (!program || !rid || !wallet) return;
+    
     const allTickets = await program.program.account.ticket.all();
+
     const onChain = allTickets.filter(
       (ticket) =>
         ticket.account.raffle.toString() == rid &&
@@ -119,6 +124,7 @@ const Raffle: NextPage = () => {
         </div>
       ))
     );
+    setallTickets(tickets.length);
     setDrawn(true);
   };
 
@@ -159,6 +165,7 @@ const Raffle: NextPage = () => {
       const signature = await program.connection.sendRawTransaction(
         signed.serialize()
       );
+      const tickets = (await program.program.account.ticket.all())
 
       await program.connection.confirmTransaction(
         {
@@ -171,7 +178,7 @@ const Raffle: NextPage = () => {
 
       setPurchasedTickets(purchasedTickets + amount);
       setSelectedTickets(1);
-
+      setallTickets(tickets.length);
       window.localStorage.setItem(
         JSON.stringify({
           rid: rid,
@@ -180,7 +187,8 @@ const Raffle: NextPage = () => {
         JSON.stringify({
           purchasedTickets: purchasedTickets + amount,
           setAt: Date.now(),
-        })
+        }),
+
       );
 
       toast.success("Purchased Ticket");
@@ -342,8 +350,12 @@ const Raffle: NextPage = () => {
             </b>
           </p>
           <p>
-            Current Tickets: &nbsp; <b>{purchasedTickets}</b>
+            Total Tickets: &nbsp; <b>{allTickets}</b>
           </p>
+          <p>
+             Your Tickets: &nbsp; <b>{purchasedTickets}</b>
+          </p>
+  
           <button
             style={{ width: "100%" }}
             onClick={() => handlePurchaseTickets(selectedTickets)}
