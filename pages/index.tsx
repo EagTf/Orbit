@@ -72,12 +72,12 @@ const Home: NextPage = () => {
 
       <div className={styles2.container}>
             <div className={styles2.title}>
-                Orbit
+                Gothic Degens
             </div>
             <div className={styles2.image}>
-                <img src="https://cdn.discordapp.com/attachments/987496036056596480/988184196788928563/logo.jpg" draggable={false}/>
+                <img src="https://cdn.discordapp.com/attachments/958811122943815740/988008214761209857/IMG-20220619-WA0018.jpg" draggable={false}/>
             </div>
-            <div className={styles2.footer_button} onClick={() => router.push(`/raffle/test`)}>
+            <div className={styles2.footer_button} onClick={() => router.push(`/raffle/b8zPDzGuMToUtSuJgP7e4cRX5wKyWsxnRfeDfW11xxk`)}>
                 MORE INFO
             </div>
         </div>
