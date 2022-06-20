@@ -188,11 +188,6 @@ const Raffle: NextPage = () => {
           purchasedTickets: purchasedTickets + amount,
           setAt: Date.now(),
         }),
-        JSON.stringify({
-          allTickets: allTickets,
-          setAt: Date.now(),
-        }),
-
       );
 
       toast.success("Purchased Ticket");
