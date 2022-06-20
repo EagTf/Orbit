@@ -106,6 +106,7 @@ const Raffle: NextPage = () => {
     if (Date.now() - localData.setAt > 60000)
       return setPurchasedTickets(onChain);
     setPurchasedTickets(localData.purchasedTickets);
+    setallTickets(allTickets.length);
   };
 
   const handleDraw = async () => {
@@ -124,7 +125,6 @@ const Raffle: NextPage = () => {
         </div>
       ))
     );
-    setallTickets(tickets.length);
     setDrawn(true);
   };
 
@@ -188,6 +188,10 @@ const Raffle: NextPage = () => {
           purchasedTickets: purchasedTickets + amount,
           setAt: Date.now(),
         }),
+        JSON.stringify({
+          allTickets: allTickets,
+          setAt: Date.now(),
+        }),
 
       );
 
@@ -201,7 +205,6 @@ const Raffle: NextPage = () => {
       console.log(err);
     }
   };
-
   const handleClose = async () => {
     setWaiting(true);
     try {
