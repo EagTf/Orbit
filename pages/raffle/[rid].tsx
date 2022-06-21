@@ -348,7 +348,7 @@ const Raffle: NextPage = () => {
             </b>
           </p>
           <p>
-            Total Tickets: &nbsp; <b>800(will Be Updated Every Couple of hours)</b>
+            Total Tickets: &nbsp; <b>1279(will Be Updated Every Couple of hours)</b>
           </p>
           <p>
              Your Tickets: &nbsp; <b>{purchasedTickets}</b>
